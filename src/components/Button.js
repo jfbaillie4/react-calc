@@ -5,14 +5,14 @@ class Button extends React.Component {
 
     static propTypes = {
         details: PropTypes.shape({
-            color: PropTypes.string, 
+            supClassList: PropTypes.string, 
             value: PropTypes.string.isRequired,
         })};
     
     render() {
-        const {color, value} = this.props.details;
+        const {supClassList, value} = this.props.details;
         return (
-        <div className={color ? `button ${color}` : "button"}>
+        <div className={supClassList ? `button ${supClassList}` : "button"}>
             <span>{value}</span>     
         </div>
         )

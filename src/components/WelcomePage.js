@@ -5,7 +5,7 @@ class WelcomePage extends React.Component {
     constructor(props) {
         super(props);
         this.input = React.createRef();
-      }   
+    };   
     
     goToCalc = event => {
         event.preventDefault();
