@@ -18,10 +18,11 @@ class CalcExtended extends React.Component {
                     <div className="line3"></div>
                 </div>
                 <Calculator />
-            </div>
-            <div className="sidebar">
+                <div className="sidebar">
                     <Tab />
                 </div>
+            </div>
+            
         </div>
         )
     }
