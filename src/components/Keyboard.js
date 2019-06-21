@@ -3,7 +3,6 @@ import Button from './Button';
 
 class Keyboard extends React.Component {
 
-    
     render() {
         return (
         <div className="keyboard">

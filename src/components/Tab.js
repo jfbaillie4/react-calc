@@ -5,8 +5,7 @@ import SavedItem from "./SavedItem";
 class Tab extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {tab: "recent"}
-        this.tabClick = this.tabClick.bind(this);
+        this.state = {tab: "recent"}  
     }
 
     tabClick = e => {
