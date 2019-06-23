@@ -13,6 +13,7 @@
     "prop-types": "^15.6.0",
     "re-base": "4.0.0",
     "react": "^16.6.3",
+    "react-device-detect": "^1.6.2",
     "react-dom": "^16.6.3",
     "react-ga": "^2.5.7",
     "react-router-dom": "^4.2.2",

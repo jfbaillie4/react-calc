@@ -1,4 +1,5 @@
 import React from 'react';
+import {isMobile} from 'react-device-detect';
 
 class Screen extends React.Component {
 
@@ -16,7 +17,7 @@ class Screen extends React.Component {
     render() {
         return (
         <div className="screen">
-            <input type="text" ref={this.mainInput} autoFocus={true} value={this.props.currentCalc.join("")} onChange={this.props.handleChange} />
+            <input type="text" ref={this.mainInput} autoFocus={true} value={this.props.currentCalc.join("")} onChange={this.props.handleChange} readOnly={isMobile ? true : false } />
         </div>
         )
     }

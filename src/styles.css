@@ -1,11 +1,18 @@
-h2 {
-    color: red;
+html, body {
+    background-color: #EFEFEF;
+    margin: 0;
+    padding:0;
+    position:absolute;/* this is very important*/
+    bottom:0;
+    top:0;
+    right:0;
+    left:0;
+    font-family: 'Muli', sans-serif;
+    overflow-y:hidden;
 }
 
-body {
-    margin: 0px;
-    font-family: 'Muli', sans-serif;
-    /*background: #EFEFEF;*/
+h2 {
+    color: red;
 }
 
 #main {
@@ -14,8 +21,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     overflow-y: hidden;
+    height: 100%;    
 }
 
 .calc-extended {
@@ -26,17 +33,12 @@ body {
 
 .menu {
     position: absolute;
-    right: 12px;
-    top: 12px;
+    right: 7px;
+    top: 7px;
     width: 32px;
+    height: 32px;
 }
 
-.menu > * {
-    background-color: #6B6B6B;
-    height: 2px;
-    margin-bottom: 8px; 
-    border-radius: 1px;
-}
 
 .line1 {
     width: 32px;
@@ -59,6 +61,7 @@ body {
     width: 100%;
     padding-top: 46px;
     margin: 0 auto;
+    /*padding-bottom: 10px;*/
 }
 
 .calculator {
@@ -174,6 +177,10 @@ body {
     justify-content: space-between;
 }
 
+.tab-line .clickable {
+    color: #FE6B0E;
+}
+
 .tab {
     cursor: pointer;
 }
@@ -182,7 +189,18 @@ body {
     font-weight: 700;
 }
 
+@media (min-width: 460px) {
+    .container {
+        height: calc(100% - 62px);
+        padding-bottom: 16px;
+    }
+}
+
 @media (min-width: 920px) {
+    html, body {
+        background-color: white;
+    }
+    
     .calc-extended {
         max-height: 652px;
         max-width: 920px;
