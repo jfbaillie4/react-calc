@@ -95,3 +95,15 @@ export function getFunName() {
 
   return `${rando(adjectives)}-${rando(adjectives)}-${rando(nouns)}`;
 }
+
+function arrayManip(array) {
+  i=0
+  do {
+    num=array[i]
+    if (isNaN(parseFloat(num))===false && num.length > 1) {
+      newArray = num.split("");
+      array.splice(i, 1, ...newArray)
+    }
+    i++
+  } while (i < array.length)
+}

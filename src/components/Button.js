@@ -8,11 +8,15 @@ class Button extends React.Component {
             supClassList: PropTypes.string, 
             value: PropTypes.string.isRequired,
         })};
+
+    buttonPress = () => {
+        this.props.buttonClick(this.props.details.value)
+    }
     
     render() {
         const {supClassList, value} = this.props.details;
         return (
-        <div className={supClassList ? `button ${supClassList}` : "button"}>
+        <div className={supClassList ? `button ${supClassList}` : "button"} onClick={this.buttonPress} >
             <span>{value}</span>     
         </div>
         )
