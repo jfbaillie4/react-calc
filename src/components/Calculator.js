@@ -17,13 +17,23 @@ class Calculator extends React.Component {
         const newArray = this.state.currentCalc
         if (value==="backspace") {
             newArray.pop()
+            this.setState({currentCalc: newArray})
+            this.props.setLastButton(value)
         } else if (value==="C") {
             newArray.length = 0
+            this.setState({currentCalc: newArray})
+            this.props.setLastButton(value)
+        } else if (value==="=") {
+            newArray.push(value)
+            this.setState({currentCalc: newArray})
+            this.props.setLastButton(value)
+            const toOperate = this.state.currentCalc.slice()
+            this.props.toRecent(toOperate)
         } else {
             newArray.push(value)
+            this.setState({currentCalc: newArray})
+            this.props.setLastButton(value)
         }
-        this.setState({currentCalc: newArray})
-        this.props.setLastButton(value)
     }
 
     handleChange = (event) => {

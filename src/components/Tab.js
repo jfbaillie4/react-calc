@@ -28,8 +28,7 @@ class Tab extends React.Component {
                 <span className="tab bold">Recent</span>
                 <span className="tab" onClick={this.tabClick} data-tab="saved">Saved</span> 
                 <div className="tab-content">
-                    <RecentItem />
-                    <RecentItem />
+                    {this.props.recentCalcs.map((item, index) => <RecentItem key={index} item={item} />)}
                 </div>    
             </div>)
 }}

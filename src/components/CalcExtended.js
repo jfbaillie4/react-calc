@@ -21,6 +21,12 @@ class CalcExtended extends React.Component {
     setLastButton = (value) => {
         this.setState({lastButton: value})
     }
+
+    toRecent = (array) => {
+        const recent = this.state.recentCalcs
+        recent.length > 15 ? recent.splice(0, 1, array) : recent.splice(0, 1, array)
+        this.setState({recentCalcs: recent})
+    }
     
     render() {
         return (
@@ -32,12 +38,13 @@ class CalcExtended extends React.Component {
                 <Calculator 
                     display={this.state.display} 
                     recentCalcs={this.state.recentCalcs} 
+                    toRecent={this.toRecent}
                     setLastButton={this.setLastButton} 
                     lastButton={this.state.lastButton} 
                     setDisplay={this.setDisplay} 
                 />
                 <div className="sidebar">
-                    <Tab />
+                    <Tab recentCalcs={this.state.recentCalcs}/>
                 </div>
             </div>
             
