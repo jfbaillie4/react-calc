@@ -24,8 +24,14 @@ class CalcExtended extends React.Component {
 
     toRecent = (array) => {
         const recent = this.state.recentCalcs
-        recent.length > 15 ? recent.splice(0, 1, array) : recent.splice(0, 1, array)
+        recent.length > 14 ? recent.splice(0, 1, array) : recent.splice(0, 0, array)
         this.setState({recentCalcs: recent})
+    }
+
+    toSaved = (array) => {
+        const saved = this.state.savedCalcs
+        saved.splice(0,0,array)
+        this.setState({savedCalcs: saved})
     }
     
     render() {
@@ -44,7 +50,7 @@ class CalcExtended extends React.Component {
                     setDisplay={this.setDisplay} 
                 />
                 <div className="sidebar">
-                    <Tab recentCalcs={this.state.recentCalcs}/>
+                    <Tab recentCalcs={this.state.recentCalcs} savedCalcs={this.state.savedCalcs} toSaved={this.toSaved}/>
                 </div>
             </div>
             
