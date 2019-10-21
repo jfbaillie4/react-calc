@@ -11,7 +11,7 @@ class CalcExtended extends React.Component {
             recentCalcs: [],
             savedCalcs: [],
             lastButton: null,
-        }  
+        } 
     }
     
     menuClick = () => {
@@ -22,16 +22,36 @@ class CalcExtended extends React.Component {
         this.setState({lastButton: value})
     }
 
-    toRecent = (array) => {
+    toRecent = (calc) => {
         const recent = this.state.recentCalcs
-        recent.length > 14 ? recent.splice(0, 1, array) : recent.splice(0, 0, array)
+        recent.length > 14 ? recent.splice(0, 1, calc) : recent.splice(0, 0, calc)
         this.setState({recentCalcs: recent})
     }
 
-    toSaved = (array) => {
+    toSaved = (calc, index) => {
         const saved = this.state.savedCalcs
-        saved.splice(0,0,array)
-        this.setState({savedCalcs: saved})
+        saved.splice(0,0,calc)
+
+        const recent = this.state.recentCalcs
+        const recentitem = recent[index]
+        recentitem.saved=true
+        recent.splice(index,1,recentitem)
+
+        this.setState({savedCalcs: saved, recentCalcs: recent})
+    }
+
+    removeSaved = (calc, index) => {
+        const saved = this.state.savedCalcs
+        saved.splice(index,1)
+
+        const recent = this.state.recentCalcs
+        //this feels a tad hacky to match the whole object, maybe map through and match ID.
+        const idx = recent.indexOf(calc)
+        const recentitem = recent[idx]
+        recentitem.saved=false
+        recent.splice(idx,1,recentitem)
+
+        this.setState({savedCalcs: saved, recentCalcs: recent})
     }
     
     render() {
@@ -48,9 +68,10 @@ class CalcExtended extends React.Component {
                     setLastButton={this.setLastButton} 
                     lastButton={this.state.lastButton} 
                     setDisplay={this.setDisplay} 
+                    savedCalcs={this.state.savedCalcs}
                 />
                 <div className="sidebar">
-                    <Tab recentCalcs={this.state.recentCalcs} savedCalcs={this.state.savedCalcs} toSaved={this.toSaved}/>
+                    <Tab recentCalcs={this.state.recentCalcs} savedCalcs={this.state.savedCalcs} toSaved={this.toSaved} removeSaved={this.removeSaved}/>
                 </div>
             </div>
             

@@ -10,7 +10,13 @@ class Calculator extends React.Component {
         this.state = {
             currentCalc: [],
             resultState: false,
-        }  
+        } 
+    }
+
+    //WANT TO PERSIST RECENT & SAVED CALCS, WHEN DONE WILL NEED TO CHANGE HERE
+    componentDidMount() {
+        this.idValue=1
+        //this.idValue = this.props.savedCalcs[(this.props.savedCalcs.length-1)] ? this.props.savedCalcs[(this.props.savedCalcs.length-1)].id + 1 : 1
     }
     
    buttonClick = (value) => {
@@ -28,7 +34,14 @@ class Calculator extends React.Component {
             this.setState({currentCalc: newArray})
             this.props.setLastButton(value)
             const toOperate = this.state.currentCalc.slice()
-            this.props.toRecent(toOperate)
+            //run the calculations and return the value.
+
+
+            //I need to turn it into an object here. SUPER HACKY USE OF RANDOM. MUST FIND BETTER SOLUTION
+            var equationObj = {id: this.idValue, equation: toOperate, saved: false}
+            this.idValue++
+            console.log(this.idValue)
+            this.props.toRecent(equationObj)
         } else {
             newArray.push(value)
             this.setState({currentCalc: newArray})

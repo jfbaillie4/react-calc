@@ -19,7 +19,7 @@ class Tab extends React.Component {
                     <span className="tab" onClick={this.tabClick} data-tab="recent">Recent</span>
                     <span className="tab bold">Saved</span> 
                     <div className="tab-content">
-                        {this.props.savedCalcs.map((calc, index) => <SavedItem key={index} calc={calc} />)}
+                        {this.props.savedCalcs.map((calc, index) => <SavedItem key={index} index={index} calc={calc} removeSaved={this.props.removeSaved}/>)}
                     </div>    
                 </div>)}
         return (
@@ -27,7 +27,7 @@ class Tab extends React.Component {
                 <span className="tab bold">Recent</span>
                 <span className="tab" onClick={this.tabClick} data-tab="saved">Saved</span> 
                 <div className="tab-content">
-                    {this.props.recentCalcs.map((calc, index) => <RecentItem key={index} calc={calc} toSaved={this.props.toSaved}/>)}
+                    {this.props.recentCalcs.map((calc, index) => <RecentItem key={index} index={index} calc={calc} toSaved={this.props.toSaved}/>)}
                 </div>    
             </div>)
 }}
