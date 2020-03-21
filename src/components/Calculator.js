@@ -2,6 +2,7 @@ import React from 'react';
 import Screen from "./Screen";
 import Keyboard from "./Keyboard";
 import PropTypes from "prop-types";
+import { runCalc } from "../calculations"
 
 class Calculator extends React.Component {
 
@@ -31,12 +32,20 @@ class Calculator extends React.Component {
             this.props.setLastButton(value)
         } else if (value==="=") {
             newArray.push(value)
+            const blankArray=[]
+            console.log(`newArray: ${newArray}`)
+            newArray.forEach((element) => runCalc(blankArray, element))
+            console.log('blankArray:')
+            console.log(blankArray)
+            console.log('newArray')
+            console.log(newArray)
             this.setState({currentCalc: newArray})
             this.props.setLastButton(value)
             const toOperate = this.state.currentCalc.slice()
             //run the calculations and return the value.
-
-
+            //runCalc calculation should work with a new modifications.
+            // won't need backspace and C dealt with
+            // will be ok with return (that is correct with map), but intersted to see if it collabpses the array correctly. 
             //I need to turn it into an object here. SUPER HACKY USE OF RANDOM. MUST FIND BETTER SOLUTION
             var equationObj = {id: this.idValue, equation: toOperate, saved: false}
             this.idValue++
